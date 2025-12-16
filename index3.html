@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelPen | Visuals & Stories</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #e0e0e0;
+            --accent-color: #00f2ea; /* Cyan Neon */
+            --secondary-accent: #7000ff; /* Purple Neon */
+            --card-bg: #161616;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace; /* Artistic/Scriptwriter feel */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .hero span {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        /* PORTFOLIO SECTION */
+        .section {
+            padding: 100px 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            border-left: 4px solid var(--secondary-accent);
+            padding-left: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: #666;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding-bottom: 5px;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--text-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #222;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-accent);
+        }
+
+        .card-text {
+            text-align: center;
+        }
+
+        /* SERVICES SECTION */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+
+        .service-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            display: block;
+        }
+
+        /* CONTACT SECTION */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .email-link {
+            font-size: 2rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        .email-link:hover {
+            color: var(--secondary-accent);
+            border-color: var(--secondary-accent);
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 20px; }
+            .nav-links { display: none; } /* Simplified for mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PixelPen.</div>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>I craft <span id="changing-text">Visuals</span></h1>
+        <p>Video Editing | Script Writing | Graphic Design</p>
+        <button class="cta-btn" onclick="document.getElementById('work').scrollIntoView()">View Portfolio</button>
+    </section>
+
+    <section id="work" class="section">
+        <h2 class="section-title">Selected Works</h2>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="filterSelection('all')">All</button>
+            <button class="tab-btn" onclick="filterSelection('video')">Video</button>
+            <button class="tab-btn" onclick="filterSelection('script')">Scripts</button>
+            <button class="tab-btn" onclick="filterSelection('design')">Design</button>
+        </div>
+
+        <div class="gallery">
+            <div class="card video">
+                <div class="card-text">
+                    <h3>Reel Edit</h3>
+                    <p style="color:#666; font-size:0.8rem;">Fashion / Fast Paced</p>
+                </div>
+            </div>
+            
+            <div class="card script">
+                <div class="card-text">
+                    <h3>Short Film Script</h3>
+                    <p style="color:#666; font-size:0.8rem;">Drama / 12 Pages</p>
+                </div>
+            </div>
+
+            <div class="card design">
+                <div class="card-text">
+                    <h3>Brand Identity</h3>
+                    <p style="color:#666; font-size:0.8rem;">Logo & Social Kit</p>
+                </div>
+            </div>
+
+             <div class="card video">
+                <div class="card-text">
+                    <h3>YouTube Docu-Style</h3>
+                    <p style="color:#666; font-size:0.8rem;">Edutainment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2 class="section-title">Services & Pricing</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>The Edit</h3>
+                <p>Professional video editing, color grading, and sound design for Reels or YouTube.</p>
+                <span class="price">$150+</span>
+            </div>
+            <div class="service-card">
+                <h3>The Script</h3>
+                <p>Engaging storytelling, hooks, and full scripts for content or short films.</p>
+                <span class="price">$100+</span>
+            </div>
+            <div class="service-card">
+                <h3>The Brand</h3>
+                <p>Full graphic design package including logos, banners, and posts.</p>
+                <span class="price">$200+</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <h2 class="section-title" style="border:none;">Let's Create.</h2>
+            <p style="margin-bottom:30px; color:#888;">Open for collaborations and freelance projects.</p>
+            <a href="mailto:hellopixelpen@gmail.com" class="email-link">hello@pixelpen.com</a>
+        </div>
+    </section>
+
+    <script>
+        // TYPEWRITER EFFECT
+        const textElement = document.getElementById("changing-text");
+        const words = ["Visuals", "Stories", "Reality", "Impact"];
+        let wordIndex = 0;
+
+        setInterval(() => {
+            wordIndex = (wordIndex + 1) % words.length;
+            textElement.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                textElement.innerText = words[wordIndex];
+                textElement.style.opacity = 1; // Fade in
+            }, 500);
+        }, 3000);
+
+        // PORTFOLIO FILTER
+        function filterSelection(category) {
+            let cards = document.getElementsByClassName("card");
+            let buttons = document.getElementsByClassName("tab-btn");
+
+            // Reset buttons
+            for (let btn of buttons) {
+                btn.classList.remove("active");
+                if (btn.innerText.toLowerCase().includes(category) || (category === 'all' && btn.innerText === 'All')) {
+                    btn.classList.add("active");
+                }
+            }
+
+            // Filter cards
+            for (let card of cards) {
+                if (category === "all") {
+                    card.style.display = "flex";
+                } else {
+                    if (card.classList.contains(category)) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
